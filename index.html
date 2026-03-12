@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>SENSI ATRIBULTADA</title>
+
+<style>
+
+body{
+background:#050505;
+font-family:Arial;
+color:#00ff9c;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.panel{
+width:900px;
+height:680px;
+background:#0a0a0a;
+border:2px solid #00ff9c;
+border-radius:20px;
+box-shadow:0 0 30px #00ff9c;
+padding:20px;
+position:relative;
+}
+
+h1{
+text-align:center;
+text-shadow:0 0 15px #00ff9c;
+}
+
+.subtitle{
+text-align:center;
+color:#aaa;
+margin-bottom:20px;
+}
+
+.topbar{
+display:flex;
+justify-content:space-between;
+font-size:14px;
+margin-bottom:10px;
+}
+
+button{
+width:100%;
+padding:12px;
+margin:6px 0;
+border:none;
+border-radius:10px;
+background:#111;
+color:#00ff9c;
+cursor:pointer;
+font-size:15px;
+box-shadow:0 0 10px #00ff9c;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.03);
+box-shadow:0 0 20px #00ff9c;
+}
+
+select{
+width:100%;
+padding:10px;
+background:#111;
+color:#00ff9c;
+border:1px solid #00ff9c;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+.sensiBox{
+background:#111;
+border:1px solid #00ff9c;
+border-radius:10px;
+padding:12px;
+margin-top:10px;
+min-height:120px;
+box-shadow:0 0 10px #00ff9c inset;
+white-space:pre-line;
+}
+
+.status{
+position:absolute;
+bottom:20px;
+left:20px;
+right:20px;
+border-top:1px solid #00ff9c;
+padding-top:5px;
+}
+
+.instagram{
+position:absolute;
+bottom:5px;
+right:20px;
+font-size:13px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="panel">
+
+<div class="topbar">
+<div>FPS: <span id="fps">60</span></div>
+<div id="clock"></div>
+<div>Conexão: Online</div>
+</div>
+
+<h1>ASCENSÃOX</h1>
+<div class="subtitle">SYSTEM CONTROL PANEL</div>
+
+<label>Marca do celular</label>
+
+<select id="device">
+<option>Samsung</option>
+<option>Xiaomi</option>
+<option>Motorola</option>
+<option>iPhone</option>
+<option>Realme</option>
+<option>Infinix</option>
+<option>Poco</option>
+</select>
+
+<button onclick="startFF()">Iniciar Free Fire</button>
+
+<button onclick="generateSensi()">GERAR SENSI</button>
+
+<button onclick="copySensi()">Copiar sensi</button>
+
+<h3>SENSI GERADA</h3>
+
+<div id="sensiBox" class="sensiBox">
+Clique em GERAR SENSI
+</div>
+
+<div class="status" id="status">
+Sistema aguardando...
+</div>
+
+<div class="instagram">@ascensaoofc</div>
+
+</div>
+
+<script>
+
+let currentSensi=""
+
+function random(min,max){
+return Math.floor(Math.random()*(max-min+1))+min
+}
+
+function generateSensi(){
+
+let device=document.getElementById("device").value
+
+let geral=random(100,200)
+let red=random(110,200)
+let x2=random(90,180)
+let x4=random(80,170)
+let awm=random(70,160)
+
+let dpi=random(400,800)
+let botao=random(40,80)
+
+currentSensi=
+"Dispositivo: "+device+
+"\n\nGeral: "+geral+
+"\nRed Dot: "+red+
+"\n2x: "+x2+
+"\n4x: "+x4+
+"\nAWM: "+awm+
+"\n\nDPI: "+dpi+
+"\nTamanho do botão: "+botao+"%"
+
+document.getElementById("sensiBox").innerText=currentSensi
+document.getElementById("status").innerText="Sensi criada ✔"
+
+}
+
+function copySensi(){
+
+navigator.clipboard.writeText(currentSensi)
+
+document.getElementById("status").innerText="Sensi copiada ✔"
+
+}
+
+function startFF(){
+
+document.getElementById("status").innerText="Abrindo Free Fire..."
+
+setTimeout(()=>{
+window.location.href="https://play.google.com/store/apps/details?id=com.dts.freefireth"
+},2000)
+
+}
+
+function clock(){
+
+let now=new Date()
+
+let h=now.getHours().toString().padStart(2,"0")
+let m=now.getMinutes().toString().padStart(2,"0")
+let s=now.getSeconds().toString().padStart(2,"0")
+
+document.getElementById("clock").innerText=h+":"+m+":"+s
+
+}
+
+setInterval(clock,1000)
+
+setInterval(()=>{
+document.getElementById("fps").innerText=random(55,65)
+},1000)
+
+</script>
+
+</body>
+  </html>
